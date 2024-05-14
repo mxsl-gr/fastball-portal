@@ -11,7 +11,6 @@ import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.util.Map;
 
 @Getter
 @Setter

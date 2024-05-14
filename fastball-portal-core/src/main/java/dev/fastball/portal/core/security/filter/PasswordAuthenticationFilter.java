@@ -3,7 +3,6 @@ package dev.fastball.portal.core.security.filter;
 import dev.fastball.portal.core.model.LoginByPassword;
 import dev.fastball.portal.core.security.handler.FastballAuthenticationFailureHandler;
 import dev.fastball.portal.core.security.handler.FastballAuthenticationSuccessHandler;
-import dev.fastball.portal.core.security.utils.JwtUtils;
 import dev.fastball.portal.core.security.utils.ResponseUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -11,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;

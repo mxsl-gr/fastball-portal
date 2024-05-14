@@ -2,7 +2,7 @@ package dev.fastball.portal.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.fastball.core.annotation.Field;
-import dev.fastball.core.info.basic.DisplayType;
+import dev.fastball.meta.basic.DisplayType;
 import dev.fastball.orm.jpa.JpaBaseEntity;
 import dev.fastball.portal.core.dict.UserStatus;
 import dev.fastball.portal.core.model.entity.UserEntity;

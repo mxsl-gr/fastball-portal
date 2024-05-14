@@ -3,7 +3,6 @@ package dev.fastball.portal.core.config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.fastball.core.component.runtime.ComponentRegistry;
 import dev.fastball.portal.core.context.PortalContext;
-import dev.fastball.portal.core.controller.PortalController;
 import dev.fastball.portal.core.security.filter.JwtAuthenticationFilter;
 import dev.fastball.portal.core.security.filter.PasswordAuthenticationFilter;
 import dev.fastball.portal.core.security.handler.FastballAuthenticationFailureHandler;

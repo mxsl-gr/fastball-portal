@@ -1,7 +1,5 @@
 package dev.fastball.portal.core.model.context;
 
-import java.util.Map;
-
 public interface Menu extends IdModel {
     Long getParentId();
 

@@ -2,10 +2,9 @@ package dev.fastball.portal.jpa.service;
 
 import dev.fastball.core.config.FastballConfig;
 import dev.fastball.core.config.Menu;
-import dev.fastball.core.utils.YamlUtils;
+import dev.fastball.meta.utils.YamlUtils;
 import dev.fastball.portal.core.dict.PermissionType;
 import dev.fastball.portal.core.exception.FastballPortalException;
-import dev.fastball.portal.core.model.context.Permission;
 import dev.fastball.portal.core.service.FastballPortalInitService;
 import dev.fastball.portal.jpa.entity.JpaMenuEntity;
 import dev.fastball.portal.jpa.entity.JpaPermissionEntity;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class JpaFastballPortalInitService implements FastballPortalInitService {

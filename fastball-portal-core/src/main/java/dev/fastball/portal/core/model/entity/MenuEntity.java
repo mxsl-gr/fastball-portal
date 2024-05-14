@@ -2,8 +2,6 @@ package dev.fastball.portal.core.model.entity;
 
 import dev.fastball.portal.core.model.context.Menu;
 
-import java.util.Map;
-
 public interface MenuEntity extends Menu {
 
     void setParentId(Long parentId);

@@ -1,7 +1,7 @@
 package dev.fastball.portal.jpa.model;
 
 import dev.fastball.core.annotation.Field;
-import dev.fastball.core.info.basic.DisplayType;
+import dev.fastball.meta.basic.DisplayType;
 import lombok.Data;
 
 import javax.validation.constraints.Size;

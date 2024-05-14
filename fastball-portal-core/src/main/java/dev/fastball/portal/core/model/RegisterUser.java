@@ -1,7 +1,6 @@
 package dev.fastball.portal.core.model;
 
 import dev.fastball.core.annotation.Field;
-import dev.fastball.core.info.basic.DisplayType;
 import dev.fastball.portal.core.dict.UserStatus;
 import lombok.Data;
 

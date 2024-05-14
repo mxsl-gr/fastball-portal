@@ -2,7 +2,7 @@ package dev.fastball.portal.core.model;
 
 import dev.fastball.core.annotation.Field;
 import dev.fastball.core.component.Component;
-import dev.fastball.core.info.basic.DisplayType;
+import dev.fastball.meta.basic.DisplayType;
 import lombok.Data;
 
 @Data

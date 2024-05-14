@@ -3,7 +3,7 @@ package dev.fastball.portal.jpa.ui;
 import dev.fastball.core.annotation.*;
 import dev.fastball.core.component.DataResult;
 import dev.fastball.core.component.RecordActionFilter;
-import dev.fastball.core.info.basic.PopupType;
+import dev.fastball.meta.basic.PopupType;
 import dev.fastball.portal.core.dict.UserStatus;
 import dev.fastball.portal.core.service.FastballPortalService;
 import dev.fastball.portal.jpa.entity.JpaUserEntity;

@@ -2,11 +2,8 @@ package dev.fastball.portal.jpa.ui;
 
 import dev.fastball.core.annotation.RecordAction;
 import dev.fastball.core.annotation.UIComponent;
-import dev.fastball.portal.core.dict.UserStatus;
 import dev.fastball.portal.core.model.RegisterUser;
 import dev.fastball.portal.core.service.FastballPortalService;
-import dev.fastball.portal.jpa.entity.JpaUserEntity;
-import dev.fastball.portal.jpa.repo.UserRepo;
 import dev.fastball.ui.components.form.Form;
 import lombok.RequiredArgsConstructor;
 
