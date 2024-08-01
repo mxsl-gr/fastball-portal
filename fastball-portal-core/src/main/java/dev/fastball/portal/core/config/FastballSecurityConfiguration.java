@@ -99,17 +99,22 @@ public class FastballSecurityConfiguration {
         DynamicAnonymousPathRequestMatcher anonymousPathRequestMatcher = new DynamicAnonymousPathRequestMatcher(componentRegistry);
         http.cors().and().csrf().disable();
         http.authorizeHttpRequests((auth) -> {
-            auth.antMatchers(
+            auth.requestMatchers(
                             HttpMethod.GET,
+                            "/",
                             "/*.html",
-                            "/**/*.html",
-                            "/**/*.css",
-                            "/**/*.js"
+                            "/**.html",
+                            "/assets/*.css",
+                            "/assets/*.js",
+                            "/**.css",
+                            "/**.js",
+                            "/*.jpg",
+                            "/*.ico"
                     ).permitAll()
-                    .antMatchers(PATH_RELEASE).permitAll()
+                    .requestMatchers(PATH_RELEASE).permitAll()
                     .requestMatchers(anonymousPathRequestMatcher).permitAll()
-                    .antMatchers(portalProperties.getAnonymousPath()).permitAll()
-                    .antMatchers("/api/**").authenticated();
+                    .requestMatchers(portalProperties.getAnonymousPath()).permitAll()
+                    .requestMatchers("/api/**").authenticated();
         });
         http.addFilterBefore(passwordAuthenticationFilter, UsernamePasswordAuthenticationFilter.class).addFilter(jwtAuthenticationFilter);
         http.exceptionHandling().authenticationEntryPoint(unloginAuthenticationEntryPoint);

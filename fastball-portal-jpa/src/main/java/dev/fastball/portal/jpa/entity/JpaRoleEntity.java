@@ -6,7 +6,7 @@ import dev.fastball.orm.jpa.JpaBaseEntity;
 import dev.fastball.portal.core.model.entity.RoleEntity;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Getter

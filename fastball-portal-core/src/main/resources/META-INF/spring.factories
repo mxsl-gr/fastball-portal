@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-dev.fastball.portal.core.config.FastballSecurityConfiguration,\
-dev.fastball.portal.core.config.FastballPortalConfiguration

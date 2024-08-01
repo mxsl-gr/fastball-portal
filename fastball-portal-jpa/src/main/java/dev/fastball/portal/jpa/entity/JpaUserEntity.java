@@ -8,7 +8,7 @@ import dev.fastball.portal.core.dict.UserStatus;
 import dev.fastball.portal.core.model.entity.UserEntity;
 import lombok.*;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 @Getter
