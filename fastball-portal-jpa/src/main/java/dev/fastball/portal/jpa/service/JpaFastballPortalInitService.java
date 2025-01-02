@@ -3,9 +3,17 @@ package dev.fastball.portal.jpa.service;
 import dev.fastball.core.config.FastballConfig;
 import dev.fastball.core.config.Menu;
 import dev.fastball.meta.utils.YamlUtils;
+import dev.fastball.portal.core.config.FastballPortalAdminProperties;
+import dev.fastball.portal.core.config.FastballPortalProperties;
 import dev.fastball.portal.core.dict.PermissionType;
+import dev.fastball.portal.core.dict.UserStatus;
 import dev.fastball.portal.core.exception.FastballPortalException;
+import dev.fastball.portal.core.model.RegisterUser;
+import dev.fastball.portal.core.model.context.Permission;
+import dev.fastball.portal.core.model.context.Role;
+import dev.fastball.portal.core.model.context.User;
 import dev.fastball.portal.core.service.FastballPortalInitService;
+import dev.fastball.portal.core.service.FastballPortalService;
 import dev.fastball.portal.jpa.entity.JpaMenuEntity;
 import dev.fastball.portal.jpa.entity.JpaPermissionEntity;
 import dev.fastball.portal.jpa.repo.MenuRepo;
@@ -21,10 +29,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class JpaFastballPortalInitService implements FastballPortalInitService {
 
+    private final FastballPortalService fastballPortalService;
+    private final FastballPortalProperties properties;
     private final PermissionRepo permissionRepo;
     private final MenuRepo menuRepo;
 
@@ -43,6 +54,31 @@ public class JpaFastballPortalInitService implements FastballPortalInitService {
         } catch (IOException e) {
             throw new FastballPortalException(e);
         }
+        if (properties.getAdmin() != null && properties.getAdmin().getInitAdmin()) {
+            initAdmin();
+        }
+    }
+
+    private void initAdmin() {
+        FastballPortalAdminProperties adminProperties = properties.getAdmin();
+        User adminUser = fastballPortalService.loadByUsername(adminProperties.getDefaultUsername());
+        if (adminUser == null) {
+            RegisterUser admin = new RegisterUser();
+            admin.setNickname("admin");
+            admin.setUsername(adminProperties.getDefaultUsername());
+            admin.setMobile(adminProperties.getDefaultMobile());
+            admin.setPassword(adminProperties.getDefaultPassword());
+            admin.setStatus(UserStatus.Enabled);
+            fastballPortalService.registerUser(admin);
+            adminUser = fastballPortalService.loadByUsername(adminProperties.getDefaultUsername());
+        }
+        Role adminRole = fastballPortalService.loadRoleByCode(adminProperties.getAdminRoleCode());
+        if (adminRole == null) {
+            adminRole = fastballPortalService.registerRole(adminProperties.getAdminRoleCode(), adminProperties.getAdminRoleName(), adminProperties.getAdminRoleDescription());
+            fastballPortalService.saveUserRoles(adminUser.getId(), Collections.singletonList(adminRole.getId()));
+        }
+        List<Long> allPermissionId = fastballPortalService.getAllPermissions().stream().map(Permission::getId).collect(Collectors.toList());
+        fastballPortalService.saveRolePermissions(adminUser.getId(), allPermissionId);
     }
 
     private void initMenuAndPermission(List<String> menuKeys, Menu menuInfo, JpaMenuEntity parentMenu, JpaPermissionEntity parentPermission) {

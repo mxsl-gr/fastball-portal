@@ -1,5 +1,6 @@
 package dev.fastball.portal.jpa.config;
 
+import dev.fastball.portal.core.config.FastballPortalProperties;
 import dev.fastball.portal.core.service.FastballPortalInitService;
 import dev.fastball.portal.core.service.FastballPortalService;
 import dev.fastball.portal.jpa.entity.JpaUserEntity;
@@ -27,7 +28,7 @@ public class JpaFastballSecurityConfiguration {
     }
 
     @Bean
-    public FastballPortalInitService fastballPortalInitService(PermissionRepo permissionRepo, MenuRepo menuRepo) {
-        return new JpaFastballPortalInitService(permissionRepo, menuRepo);
+    public FastballPortalInitService fastballPortalInitService(FastballPortalService fastballPortalService, FastballPortalProperties properties, PermissionRepo permissionRepo, MenuRepo menuRepo) {
+        return new JpaFastballPortalInitService(fastballPortalService, properties, permissionRepo, menuRepo);
     }
 }

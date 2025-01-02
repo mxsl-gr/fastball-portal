@@ -23,7 +23,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -52,6 +56,16 @@ public class JpaFastballPortalService implements FastballPortalService {
         }
         userRepo.save(userEntity);
         return userEntity;
+    }
+
+    @Override
+    public Role registerRole(String roleCode, String roleName, String description) {
+        JpaRoleEntity role = new JpaRoleEntity();
+        role.setCode(roleCode);
+        role.setName(roleName);
+        role.setDescription(description);
+        roleRepo.save(role);
+        return role;
     }
 
     @Override
@@ -169,6 +183,11 @@ public class JpaFastballPortalService implements FastballPortalService {
     @Override
     public List<Role> getAllRole() {
         return roleRepo.findAll().stream().map(p -> (Role) p).collect(Collectors.toList());
+    }
+
+    @Override
+    public Role loadRoleByCode(String roleCode) {
+        return roleRepo.findByCode(roleCode);
     }
 
     @Override

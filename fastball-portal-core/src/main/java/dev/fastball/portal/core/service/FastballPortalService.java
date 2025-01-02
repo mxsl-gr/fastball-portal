@@ -16,6 +16,8 @@ public interface FastballPortalService {
 
     User registerUser(RegisterUser user);
 
+    Role registerRole(String roleCode, String roleName, String description);
+
     void changePassword(Long userId, String password, String newPassword);
 
     boolean resetPasswordByUserId(Long userId, String password);
@@ -37,6 +39,8 @@ public interface FastballPortalService {
     List<Permission> getAllPermissions();
 
     List<Role> getAllRole();
+
+    Role loadRoleByCode(String roleCode);
 
     UserEntity loadAccountByUsername(String username);
 
